@@ -1,0 +1,33 @@
+from bisect import bisect_right as up_bound
+MAX = 100;
+def bimed(m, r, d):
+    min = m[0][0]
+    max = 0
+    for i in range(r):
+        if m[i][0] < min:
+            min = m[i][0]
+        if m[i][d-1] > max :
+            max =  m[i][d-1]
+    x = (r * d + 1) // 2
+    while (min < max):
+        mid = min + (max - min) // 2
+        pos = [0];
+        for i in range(r):
+             j = up_bound(m[i], mid)
+             pos[0] = pos[0] + j
+        if pos[0] < x:
+            min = mid + 1
+        else:
+            max = mid
+    print (min)
+    return     
+r = int(input())
+d = int(input())
+m = []
+for i in range(r):          
+    a =[]
+    for j in range(d):      
+         a.append(int(input()))
+    m.append(a)
+    
+bimed(m, r, d)
