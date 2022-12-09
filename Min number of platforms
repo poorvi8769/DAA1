@@ -1,0 +1,18 @@
+def findPlat(arr, dep, n):
+    plat = 1
+    res= 1
+    for i in range(n):
+        plat= 1 
+        for j in range(n):
+            if i != j:
+                if (arr[i] >= arr[j] and dep[j] >= arr[i]):
+                    plat =plat + 1
+        res = max(res, plat) 
+    return res
+def main():
+    arr = list(map(int, input().strip().split()))
+    dep = list(map(int, input().strip().split())) 
+    n = len(arr) 
+    print("{}".format(findPlat(arr, dep, n))) 
+if _name_ == '_main_':
+    main()
